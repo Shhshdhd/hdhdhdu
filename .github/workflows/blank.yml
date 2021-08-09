@@ -1,5 +1,9 @@
 name: ONTA
-on: [push, pull_request]
+on:  
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
 jobs:
   build:
     name: ONTA
@@ -24,3 +28,5 @@ jobs:
       uses: actions/checkout@v1
     - name: ONTA
       run: |
+        chmod +x "${GITHUB_WORKSPACE}/wuzz.sh"
+        "${GITHUB_WORKSPACE}/wuzz.sh"
